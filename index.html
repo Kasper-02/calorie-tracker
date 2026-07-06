@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Log</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="app">
@@ -31,6 +32,7 @@
 
         <section id="list-section">
             <h2>Today's meals</h2>
+            <div class="table-wrapper">
             <table>
                 <thead>
                                       <tr>
@@ -45,6 +47,7 @@
                     <!-- Сюда будет вставлятся таблица -->
                 </tbody>
             </table>
+                </div>
         </section>
 
         <section id="total-section">
@@ -55,6 +58,10 @@
         <section id="panic-section">
             <!-- Сюда будет вставлятся паника -->
         </section>
+        <section id="chart-section">
+    <h2> Weekly Calories</h2>
+    <canvas id="caloriesChart" width="400" height="200"></canvas>
+</section>
     </div>
 
     <script src="app.js"></script>
