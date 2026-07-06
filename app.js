@@ -119,6 +119,7 @@ const panicSection = document.getElementById('panic-section');
 loadData();
 renderTable();
 updateTotal();
+renderChart();
 
 // ====== Add product ======
 addBtn.addEventListener('click', function() {
@@ -160,6 +161,7 @@ addBtn.addEventListener('click', function() {
     renderTable();
     updateTotal();
     checkPanic();
+    renderChart();
 
     productInput.value = '';
     weightInput.value = '';
@@ -206,6 +208,7 @@ function deleteEntry(id) {
     renderTable();
     updateTotal();
     checkPanic();
+    renderChart();
 }
 
 // ====== Update total ======
@@ -226,17 +229,17 @@ function checkPanic() {
     if (total > 2000 && total <= 3000) {
         panicSection.innerHTML = `
             <div class="panic-box">
-                <h3>⚠️ Warning!</h3>
+                <h3> Warning!</h3>
                 <p>You've exceeded 2000 kcal! Your belly demands a ransom — 500 push-ups!</p>
             </div>
         `;
     } else if (total > 3000) {
         panicSection.innerHTML = `
             <div class="panic-box">
-                <h3>🚨 PANIC!</h3>
+                <h3> PANIC!</h3>
                 <p>You ate ${total} kcal! Run to the gym now! The coach is on the way!</p>
                 <button onclick="alert('SAVE YOURSELF! Run to the treadmill! 🏃')" style="margin-top:10px; background:#d63031;">
-                    🏃 Panic Button
+                     Panic Button
                 </button>
             </div>
         `;
@@ -251,6 +254,7 @@ clearBtn.addEventListener('click', function() {
         renderTable();
         updateTotal();
         checkPanic();
+        renderChart();
     }
 });
 
@@ -308,4 +312,87 @@ const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     document.body.classList.add('dark');
     themeToggle.textContent = '☀️';
+}
+
+// ====== Chart.js ======
+let chartInstance = null;
+
+function renderChart() {
+    const ctx = document.getElementById('caloriesChart');
+    if (!ctx) return; // если графика нет на странице
+
+    const days = [];
+    const totals = [];
+
+    for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        const dateStr = date.toLocaleDateString('en-GB');
+        days.push(dateStr);
+
+        const dayTotal = entries
+            .filter(e => e.date === dateStr)
+            .reduce((sum, e) => sum + e.calories, 0);
+        totals.push(dayTotal);
+    }
+
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: days,
+            datasets: [{
+                label: 'Calories per day',
+                data: totals,
+                backgroundColor: 'rgba(230, 126, 34, 0.6)',
+                borderColor: 'rgba(230, 126, 34, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// ====== Export CSV ======
+function exportCSV() {
+    if (entries.length === 0) {
+        alert('No data to export!');
+        return;
+    }
+
+    let csv = 'Food,kcal,Weight,Date\n';
+
+    for (let i = 0; i < entries.length; i++) {
+        const e = entries[i];
+        csv += `${e.name},${e.calories},${e.weight},${e.date}\n`;
+    }
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `calories_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// ====== Кнопка экспорта ======
+const exportBtn = document.getElementById('exportBtn');
+if (exportBtn) {
+    exportBtn.addEventListener('click', exportCSV);
 }
