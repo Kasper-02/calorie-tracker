@@ -2,6 +2,9 @@
 let entries = [];
 const STORAGE_KEY = 'calories_data';
 
+// ====== Chart.js ======
+let chartInstance = null;
+
 // ====== Встроенная база продуктов (ккал на 100 г) ======
 const foodDB = {
     "курица": 165,
@@ -291,9 +294,7 @@ if (savedTheme === 'dark') {
     themeToggle.textContent = '☀️';
 }
 
-// ====== Chart.js ======
-let chartInstance = null;
-
+// ====== Render Chart ======
 function renderChart() {
     const ctx = document.getElementById('caloriesChart');
     if (!ctx) return;
