@@ -164,25 +164,22 @@ caloriesInput.addEventListener('keypress', function(e) {
 
 console.log('App loaded successfully!');
 
-// ====== Тёмная тема ======
+// ====== Dark theme ======
 const themeToggle = document.getElementById('themeToggle');
 
 themeToggle.addEventListener('click', function() {
     document.body.classList.toggle('dark');
-    
-    // Меняем иконку
+
     if (document.body.classList.contains('dark')) {
         themeToggle.textContent = '☀️';
     } else {
         themeToggle.textContent = '🌙';
     }
-    
-    // Сохраняем выбор в localStorage
+
     const isDark = document.body.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// Загружаем сохранённую тему при старте
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     document.body.classList.add('dark');
