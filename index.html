@@ -1,67 +1,74 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Log</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Log — Calorie Tracker</title>
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div id="app">
         <header>
-            <h1>🍔 Daily Log</h1>
-            <button id="themeToggle" style="background: none; border: none; font-size: 24px; cursor: pointer;">
-            🌙
-            </button>
+            <h1> Daily Log — Calorie Tracker</h1>
             <p>Track your calories before it's too late!</p>
+            <button id="themeToggle" style="background: none; border: none; font-size: 24px; cursor: pointer;">🌙</button>
         </header>
 
         <section id="add-section">
             <h2>Add Food</h2>
             <div class="form-group">
-                <input type="text" id="productInput" placeholder="Food Name">
-               <input type="number" id="caloriesInput" placeholder="kcal ">
-                <p style="font-size: 14px; color: #888;">
-     If product is in our database, calories will be calculated automatically. Otherwise, enter them manually.
-</p>
-                <input type="number" id="weightInput" placeholder="Weight (g)">
+                <input type="text" id="productInput" placeholder="Food name" />
+                <input type="number" id="weightInput" placeholder="Weight (g)" />
+                <input type="number" id="caloriesInput" placeholder="kcal (optional)" />
                 <button id="addBtn">➕ Add</button>
             </div>
+            <p style="font-size: 14px; color: #888; margin-top: 6px;">
+                 If product is in our database, calories will be calculated automatically. Otherwise, enter them manually.
+            </p>
         </section>
 
         <section id="list-section">
-            <h2>Today's meals</h2>
+            <h2>Today's Meals</h2>
             <div class="table-wrapper">
-            <table>
-                <thead>
-                                      <tr>
-                        <th>Food</th>
-                        <th>kcal</th>
-                        <th>Weight</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                    <!-- Сюда будет вставлятся таблица -->
-                </tbody>
-            </table>
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>kcal</th>
+                            <th>Weight</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="total-section">
-            <h2>Total today <span id="totalCalories">0</span> kcal</h2>
+            <h2>Total today: <span id="totalCalories">0</span> kcal</h2>
             <button id="clearBtn">🗑 Clear all</button>
         </section>
 
         <section id="panic-section">
-            <!-- Сюда будет вставлятся паника -->
+            <!-- Panic messages will appear here -->
         </section>
+
         <section id="chart-section">
-    <h2> Weekly Calories</h2>
-    <canvas id="caloriesChart" width="400" height="200"></canvas>
-</section>
+            <h2> Weekly Calories</h2>
+            <canvas id="caloriesChart" width="400" height="200"></canvas>
+        </section>
+
+        <section id="export-section">
+            <button id="exportBtn"> Export CSV</button>
+        </section>
     </div>
 
     <script src="app.js"></script>
