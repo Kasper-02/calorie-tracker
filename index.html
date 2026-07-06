@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Log</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>🍔 Daily Log</h1>
+            <p>Track your calories before it's too late!s</p>
+        </header>
+
+        <section id="add-section">
+            <h2>Add Food</h2>
+            <div class="form-group">
+                <input type="text" id="productInput" placeholder="Food Name">
+                <input type="number" id="caloriesInput" placeholder="kcal">
+                <button id="addBtn">➕ Add</button>
+            </div>
+        </section>
+
+        <section id="list-section">
+            <h2>Today's meals</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>kcal</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Сюда будет вставлятся таблица -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="total-section">
+            <h2>Total today <span id="totalCalories">0</span> kcal</h2>
+            <button id="clearBtn">🗑 Clear all</button>
+        </section>
+
+        <section id="panic-section">
+            <!-- Сюда будет вставлятся паника -->
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

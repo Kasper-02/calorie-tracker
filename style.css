@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    padding: 20px;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #e67e22;
+}
+
+header p {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    border-color: #e67e22;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #d35400;
+    transform: scale(1.02);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+th {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background: #f9f9f9;
+}
+
+#total-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ecf0f1;
+}
+
+#totalCalories {
+    color: #e67e22;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#clearBtn {
+    background: #e74c3c;
+}
+
+#clearBtn:hover {
+    background: #c0392b;
+}
+
+.panic-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffeaa7;
+    border-left: 6px solid #fdcb6e;
+    border-radius: 10px;
+    animation: shake 0.5s;
+}
+
+.panic-box h3 {
+    color: #d63031;
+    font-size: 22px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
