@@ -164,7 +164,6 @@ caloriesInput.addEventListener('keypress', function(e) {
 
 console.log('App loaded successfully!');
 
-
 // ====== Тёмная тема ======
 const themeToggle = document.getElementById('themeToggle');
 
