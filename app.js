@@ -4,7 +4,6 @@ const STORAGE_KEY = 'calories_data';
 
 // ====== Встроенная база продуктов (ккал на 100 г) ======
 const foodDB = {
-    // Мясо / Meat
     "курица": 165,
     "chicken": 165,
     "говядина": 250,
@@ -13,16 +12,12 @@ const foodDB = {
     "pork": 320,
     "баранина": 280,
     "lamb": 280,
-
-    // Рыба / Fish
     "рыба": 110,
     "fish": 110,
     "минтай": 70,
     "pollock": 70,
     "треска": 75,
     "cod": 75,
-
-    // Крупы / Grains
     "рис": 130,
     "rice": 130,
     "гречка": 110,
@@ -31,14 +26,10 @@ const foodDB = {
     "oats": 88,
     "макароны": 131,
     "pasta": 131,
-
-    // Хлеб / Bread
     "хлеб": 265,
     "bread": 265,
     "багет": 300,
     "baguette": 300,
-
-    // Овощи / Vegetables
     "картофель": 77,
     "potato": 77,
     "морковь": 41,
@@ -51,8 +42,6 @@ const foodDB = {
     "cucumber": 15,
     "капуста": 28,
     "cabbage": 28,
-
-    // Фрукты / Fruits
     "яблоко": 52,
     "apple": 52,
     "банан": 89,
@@ -61,8 +50,6 @@ const foodDB = {
     "orange": 47,
     "груша": 57,
     "pear": 57,
-
-    // Молочное / Dairy
     "молоко": 64,
     "milk": 64,
     "творог": 121,
@@ -71,34 +58,24 @@ const foodDB = {
     "cheese": 350,
     "кефир": 40,
     "kefir": 40,
-
-    // Яйца / Eggs
     "яйцо": 155,
     "egg": 155,
-
-    // Масла / Oils
     "масло сливочное": 748,
     "butter": 748,
     "масло подсолнечное": 899,
     "sunflower oil": 899,
     "оливковое масло": 884,
     "olive oil": 884,
-
-    // Сладости / Sweets
     "сахар": 387,
     "sugar": 387,
     "мёд": 304,
     "honey": 304,
     "шоколад": 546,
     "chocolate": 546,
-
-    // Орехи / Nuts
     "грецкий орех": 654,
     "walnut": 654,
     "миндаль": 579,
     "almond": 579,
-
-    // Напитки / Drinks
     "кофе": 2,
     "coffee": 2,
     "чай": 1,
@@ -229,17 +206,17 @@ function checkPanic() {
     if (total > 2000 && total <= 3000) {
         panicSection.innerHTML = `
             <div class="panic-box">
-                <h3> Warning!</h3>
+                <h3>⚠️ Warning!</h3>
                 <p>You've exceeded 2000 kcal! Your belly demands a ransom — 500 push-ups!</p>
             </div>
         `;
     } else if (total > 3000) {
         panicSection.innerHTML = `
             <div class="panic-box">
-                <h3> PANIC!</h3>
+                <h3>🚨 PANIC!</h3>
                 <p>You ate ${total} kcal! Run to the gym now! The coach is on the way!</p>
                 <button onclick="alert('SAVE YOURSELF! Run to the treadmill! 🏃')" style="margin-top:10px; background:#d63031;">
-                     Panic Button
+                    🏃 Panic Button
                 </button>
             </div>
         `;
@@ -319,7 +296,7 @@ let chartInstance = null;
 
 function renderChart() {
     const ctx = document.getElementById('caloriesChart');
-    if (!ctx) return; // если графика нет на странице
+    if (!ctx) return;
 
     const days = [];
     const totals = [];
