@@ -140,3 +140,68 @@ tr:hover {
     25% { transform: translateX(-10px); }
     75% { transform: translateX(10px); }
 }
+
+/* ====== Тёмная тема ====== */
+body.dark {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark #app {
+    background: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+body.dark h1,
+body.dark h2 {
+    color: #f39c12;
+}
+
+body.dark header p {
+    color: #b0b0b0;
+}
+
+body.dark .form-group input {
+    background: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark .form-group input:focus {
+    border-color: #f39c12;
+}
+
+body.dark table th {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark table td {
+    border-bottom-color: #444;
+}
+
+body.dark tr:hover {
+    background: #333;
+}
+
+body.dark #total-section {
+    border-top-color: #444;
+}
+
+body.dark #clearBtn {
+    background: #c0392b;
+}
+
+body.dark .panic-box {
+    background: #3d2b1f;
+    border-left-color: #e67e22;
+}
+
+body.dark .panic-box h3 {
+    color: #e74c3c;
+}
+
+body.dark .delete-btn {
+    background: transparent;
+    color: #e74c3c;
+}
